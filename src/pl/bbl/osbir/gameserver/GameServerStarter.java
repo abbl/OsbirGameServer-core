@@ -5,13 +5,17 @@ import pl.bbl.osbir.gameserver.authserver.connection.properties.AuthenticationCo
 import pl.bbl.osbir.gameserver.server.GameServer;
 import pl.bbl.osbir.gameserver.server.player.Player;
 import pl.bbl.osbir.gameserver.server.properties.GameServerProperties;
+import pl.bbl.osbir.gameserver.tools.ServerLogger;
 
 public class GameServerStarter {
     public static void main(String args[]){
-        Thread thread = new Thread(new GameServer(GameServerProperties.GAMESERVER_PORT, Player.class));
-        thread.start();
-        Thread thread1 = new Thread(new AuthenticationServerConnection(AuthenticationConnectionProperties.AUTHENTICATION_HOST, AuthenticationConnectionProperties.AUTHENTICATION_PORT));
-        System.out.println("[Info]Server started");
-        thread1.start();
+        GameServer gameServer = new GameServer(GameServerProperties.GAMESERVER_PORT, Player.class);
+        AuthenticationServerConnection authenticationServerConnection = new AuthenticationServerConnection(AuthenticationConnectionProperties.AUTHENTICATION_HOST,
+                AuthenticationConnectionProperties.AUTHENTICATION_PORT, gameServer);
+        new Thread(authenticationServerConnection).start();
+        authenticationServerConnection.verifyServer();
+        while(!gameServer.isAuthenticated());
+        ServerLogger.log("Server started.");
+        new Thread(gameServer).start();
     }
 }
