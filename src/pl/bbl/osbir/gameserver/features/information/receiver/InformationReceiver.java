@@ -2,8 +2,7 @@ package pl.bbl.osbir.gameserver.features.information.receiver;
 
 import pl.bbl.network.packet.Packet;
 import pl.bbl.network.server.handlers.PacketReceiver;
-import pl.bbl.osbir.gameserver.authserver.connection.AuthenticationServerConnection;
-import pl.bbl.osbir.gameserver.features.information.InformationExchanger;
+import pl.bbl.osbir.gameserver.authserver.connection.instance.AuthenticationServerConnection;
 
 public class InformationReceiver extends PacketReceiver {
     private AuthenticationServerConnection connection;

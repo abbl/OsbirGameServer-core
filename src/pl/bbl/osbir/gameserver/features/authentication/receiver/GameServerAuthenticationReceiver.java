@@ -2,10 +2,10 @@ package pl.bbl.osbir.gameserver.features.authentication.receiver;
 
 import pl.bbl.network.packet.Packet;
 import pl.bbl.network.server.handlers.PacketReceiver;
-import pl.bbl.osbir.gameserver.authserver.connection.AuthenticationServerConnection;
+import pl.bbl.osbir.gameserver.authserver.connection.instance.AuthenticationServerConnection;
 import pl.bbl.osbir.gameserver.features.authentication.GameServerAuthenticator;
-import pl.bbl.osbir.gameserver.features.authentication.packets.GameServerAuthenticationPacket;
-import pl.bbl.osbir.gameserver.server.GameServer;
+import pl.bbl.osbir.gameserver.features.authentication.packets.AuthenticationPackets;
+import pl.bbl.osbir.gameserver.server.instance.GameServer;
 import pl.bbl.osbir.gameserver.tools.ServerLogger;
 
 public class GameServerAuthenticationReceiver extends PacketReceiver {
@@ -30,6 +30,6 @@ public class GameServerAuthenticationReceiver extends PacketReceiver {
 
     public void requestAuthentication(String gameServerAuthenticationKey){
         ServerLogger.log("Server authentication has been requested.");
-        connection.write(GameServerAuthenticationPacket.createPacket(gameServerAuthenticationKey));
+        connection.write(AuthenticationPackets.createGameServerAuthenticationPacket(gameServerAuthenticationKey));
     }
 }

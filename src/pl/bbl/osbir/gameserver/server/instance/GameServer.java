@@ -1,4 +1,4 @@
-package pl.bbl.osbir.gameserver.server;
+package pl.bbl.osbir.gameserver.server.instance;
 
 import io.netty.channel.ChannelPipeline;
 import pl.bbl.network.server.AbstractServer;

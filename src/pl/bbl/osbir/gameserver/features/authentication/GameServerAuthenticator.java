@@ -1,7 +1,7 @@
 package pl.bbl.osbir.gameserver.features.authentication;
 
 import pl.bbl.network.packet.Packet;
-import pl.bbl.osbir.gameserver.server.GameServer;
+import pl.bbl.osbir.gameserver.server.instance.GameServer;
 import pl.bbl.osbir.gameserver.tools.ServerLogger;
 
 public class GameServerAuthenticator {

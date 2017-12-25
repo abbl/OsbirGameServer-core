@@ -1,10 +1,10 @@
-package pl.bbl.osbir.gameserver.authserver.connection;
+package pl.bbl.osbir.gameserver.authserver.connection.instance;
 
 import io.netty.channel.ChannelPipeline;
 import pl.bbl.network.client.AbstractClient;
 import pl.bbl.network.server.handlers.PacketHandler;
 import pl.bbl.osbir.gameserver.features.authentication.receiver.GameServerAuthenticationReceiver;
-import pl.bbl.osbir.gameserver.server.GameServer;
+import pl.bbl.osbir.gameserver.server.instance.GameServer;
 import pl.bbl.osbir.gameserver.server.properties.GameServerProperties;
 
 public class AuthenticationServerConnection extends AbstractClient {
