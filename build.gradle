@@ -6,7 +6,7 @@ apply plugin: "application"
 apply plugin: "idea"
 
 sourceSets.main.java.srcDirs = [ "src/" ]
-mainClassName = "pl.bbl.osbir.gameserver.GameServerStarter"
+mainClassName = "pl.bbl.osbir.ApplicationStarter"
 sourceCompatibility = 1.8
 
 repositories {
