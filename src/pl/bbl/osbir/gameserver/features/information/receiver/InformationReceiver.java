@@ -20,4 +20,8 @@ public class InformationReceiver extends PacketReceiver {
         }
         return false;
     }
+
+    public void requestUserVerification(String userId){
+
+    }
 }
