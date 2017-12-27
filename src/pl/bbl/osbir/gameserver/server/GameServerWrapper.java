@@ -1,5 +1,6 @@
 package pl.bbl.osbir.gameserver.server;
 
+import pl.bbl.osbir.gameserver.SegmentsCommunicationDirector;
 import pl.bbl.osbir.gameserver.server.instance.GameServer;
 import pl.bbl.osbir.gameserver.server.player.Player;
 import pl.bbl.osbir.gameserver.server.properties.GameServerProperties;
@@ -8,10 +9,16 @@ import pl.bbl.osbir.gameserver.tools.ServerLogger;
 public class GameServerWrapper {
     private GameServer gameServer;
     private Thread gameServerThread;
+    private SegmentsCommunicationDirector segmentsCommunicationDirector;
     private static final Object lock = new Object();
 
-    public GameServerWrapper(){
-        gameServer = new GameServer(GameServerProperties.GAMESERVER_PORT, Player.class);
+    public GameServerWrapper(SegmentsCommunicationDirector segmentsCommunicationDirector){
+        this.segmentsCommunicationDirector = segmentsCommunicationDirector;
+        initializeGameServer();
+    }
+
+    private void initializeGameServer(){
+        gameServer = new GameServer(GameServerProperties.GAMESERVER_PORT, Player.class, this);
         gameServerThread = new Thread(gameServer);
     }
 
@@ -43,14 +50,19 @@ public class GameServerWrapper {
         }
     }
 
+    public void requestUserVerification(String userId){
+        segmentsCommunicationDirector.requestUserVerification(userId);
+    }
+
     public void receiveVerificationResult(String userId, boolean result){
         Player player = gameServer.getPlayerById(userId);
 
-        if(player != null && result)
-            player.setAuthenticated(true);
-        else{
-            gameServer.disconnectUser(userId);
-            ServerLogger.log("A user with fake key was forced to disconnect");
-        }
+        if(player != null)
+            if(result)
+                player.setAuthenticated(true);
+            else{
+                gameServer.disconnectUser(userId);
+                ServerLogger.log("A user with fake key was forced to disconnect");
+            }
     }
 }

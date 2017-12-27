@@ -8,7 +8,7 @@ public class SegmentsCommunicationDirector {
     private AuthenticationConnectionWrapper authenticationConnectionWrapper;
 
     public SegmentsCommunicationDirector(){
-        this.gameServerWrapper = new GameServerWrapper();
+        this.gameServerWrapper = new GameServerWrapper(this);
         this.authenticationConnectionWrapper = new AuthenticationConnectionWrapper(this);
     }
 
@@ -20,8 +20,8 @@ public class SegmentsCommunicationDirector {
         gameServerWrapper.startGameServer();
     }
 
-    public void requestUserVerification(){
-
+    public void requestUserVerification(String userId){
+        authenticationConnectionWrapper.requestUserVerification(userId);
     }
 
     public void passUserVerificationResult(String userId, boolean result){
