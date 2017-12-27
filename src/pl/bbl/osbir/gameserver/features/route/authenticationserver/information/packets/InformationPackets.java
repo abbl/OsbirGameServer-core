@@ -1,4 +1,4 @@
-package pl.bbl.osbir.gameserver.features.information.packets;
+package pl.bbl.osbir.gameserver.features.route.authenticationserver.information.packets;
 
 import pl.bbl.network.packet.Packet;
 

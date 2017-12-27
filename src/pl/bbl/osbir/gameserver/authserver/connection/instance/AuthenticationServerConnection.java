@@ -4,7 +4,7 @@ import io.netty.channel.ChannelPipeline;
 import pl.bbl.network.client.AbstractClient;
 import pl.bbl.network.server.handlers.PacketHandler;
 import pl.bbl.osbir.gameserver.SegmentsCommunicationDirector;
-import pl.bbl.osbir.gameserver.features.authentication.receiver.GameServerAuthenticationReceiver;
+import pl.bbl.osbir.gameserver.features.route.authenticationserver.authentication.receiver.GameServerAuthenticationReceiver;
 import pl.bbl.osbir.gameserver.server.properties.GameServerProperties;
 
 public class AuthenticationServerConnection extends AbstractClient {
