@@ -1,8 +1,8 @@
-package pl.bbl.osbir.gameserver.authserver.connection;
+package pl.bbl.osbir.gameserver.authconnection;
 
 import pl.bbl.osbir.gameserver.SegmentsCommunicationDirector;
-import pl.bbl.osbir.gameserver.authserver.connection.instance.AuthenticationServerConnection;
-import pl.bbl.osbir.gameserver.authserver.connection.properties.AuthenticationConnectionProperties;
+import pl.bbl.osbir.gameserver.authconnection.instance.AuthenticationServerConnection;
+import pl.bbl.osbir.gameserver.authconnection.properties.AuthenticationConnectionProperties;
 import pl.bbl.osbir.gameserver.tools.ServerLogger;
 
 public class AuthenticationConnectionWrapper {

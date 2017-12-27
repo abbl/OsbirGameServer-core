@@ -1,4 +1,4 @@
-package pl.bbl.osbir.gameserver.authserver.connection.instance;
+package pl.bbl.osbir.gameserver.authconnection.instance;
 
 import io.netty.channel.ChannelPipeline;
 import pl.bbl.network.client.AbstractClient;

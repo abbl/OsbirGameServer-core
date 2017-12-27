@@ -1,6 +1,6 @@
 package pl.bbl.osbir.gameserver;
 
-import pl.bbl.osbir.gameserver.authserver.connection.AuthenticationConnectionWrapper;
+import pl.bbl.osbir.gameserver.authconnection.AuthenticationConnectionWrapper;
 import pl.bbl.osbir.gameserver.server.GameServerWrapper;
 
 public class SegmentsCommunicationDirector {
