@@ -35,4 +35,8 @@ public class SegmentsCommunicationDirector {
     public void passServerAuthenticationResult(boolean result){
         gameServerWrapper.authenticateServer(result);
     }
+
+    public void updateGameServerInformationInAuthServer(){
+        authenticationConnectionWrapper.sendGameServerInformation();
+    }
 }

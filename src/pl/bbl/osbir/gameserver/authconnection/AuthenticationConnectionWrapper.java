@@ -41,4 +41,8 @@ public class AuthenticationConnectionWrapper {
     public void passUserVerificationResult(String userId, boolean result){
         segmentsCommunicationDirector.passUserVerificationResult(userId, result);
     }
+
+    public void sendGameServerInformation(){
+        authenticationServerConnection.sendGameServerInformation();
+    }
 }

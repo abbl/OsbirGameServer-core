@@ -57,4 +57,8 @@ public class AuthenticationServerConnection extends AbstractClient {
     public void passUserVerificationResult(String userId, boolean result){
         authenticationConnectionWrapper.passUserVerificationResult(userId, result);
     }
+
+    public void sendGameServerInformation(){
+        informationReceiver.updateServerInformation();
+    }
 }

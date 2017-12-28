@@ -8,5 +8,6 @@ public class ApplicationStarter {
         segmentsCommunicationDirector.connectToAuthenticationServer();
         segmentsCommunicationDirector.requestGameServerAuthentication();
         segmentsCommunicationDirector.startGameServer();
+        segmentsCommunicationDirector.updateGameServerInformationInAuthServer();
     }
 }

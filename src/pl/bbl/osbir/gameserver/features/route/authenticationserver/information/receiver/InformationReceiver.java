@@ -27,6 +27,10 @@ public class InformationReceiver extends PacketReceiver {
         sendPacket(InformationPackets.createUserVerificationPacket(userId));
     }
 
+    public void updateServerInformation(){
+        sendPacket(InformationPackets.createServerInformationPacket());
+    }
+
     private AuthenticationServerConnection getAuthenticationServerConnection(){
         return (AuthenticationServerConnection) abstractClient;
     }
