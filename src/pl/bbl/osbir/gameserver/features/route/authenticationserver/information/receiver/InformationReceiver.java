@@ -15,8 +15,8 @@ public class InformationReceiver extends PacketReceiver {
     @Override
     public boolean receive(Packet packet) {
         switch(packet.packetPurpose){
-            case "USER_AUTHENTICATION_RESULT":
-                getAuthenticationServerConnection().passUserVerificationResult((String)packet.getData("userKey"),
+            case "USER_VERIFICATION_RESULT":
+                getAuthenticationServerConnection().passUserVerificationResult((String)packet.getData("userId"),
                         (boolean)packet.getData("result"));
                 return true;
         }
