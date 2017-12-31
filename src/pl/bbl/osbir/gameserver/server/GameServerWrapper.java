@@ -50,19 +50,11 @@ public class GameServerWrapper {
         }
     }
 
-    public void requestUserVerification(String userId){
-        segmentsCommunicationDirector.requestUserVerification(userId);
+    public void requestUserVerification(String userIdToVerify){
+        segmentsCommunicationDirector.requestUserVerification(userIdToVerify);
     }
 
     public void receiveVerificationResult(String userId, boolean result){
-        Player player = gameServer.getPlayerById(userId);
-
-        if(player != null)
-            if(result)
-                player.setAuthenticated(true);
-            else{
-                gameServer.disconnectUser(userId);
-                ServerLogger.log("A user with fake key was forced to disconnect");
-            }
+        gameServer.receiveUserVerificationResult(userId, result);
     }
 }
