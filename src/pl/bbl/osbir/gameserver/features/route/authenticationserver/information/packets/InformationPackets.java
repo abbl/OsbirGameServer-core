@@ -4,7 +4,7 @@ import pl.bbl.network.packet.Packet;
 import pl.bbl.osbir.gameserver.server.properties.GameServerProperties;
 
 public abstract class InformationPackets {
-    private static String packetType = "INFORMATION_EXCHANGE";
+    private static String packetType = "INFORMATION_PACKETS";
 
     public static Packet createUserVerificationPacket(String userKey){
         return new Packet(packetType, "VERIFY_USER").addData("userKey", userKey);

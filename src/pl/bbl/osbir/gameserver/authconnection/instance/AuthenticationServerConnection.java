@@ -6,8 +6,10 @@ import pl.bbl.network.server.handlers.PacketHandler;
 import pl.bbl.osbir.gameserver.SegmentsCommunicationDirector;
 import pl.bbl.osbir.gameserver.authconnection.AuthenticationConnectionWrapper;
 import pl.bbl.osbir.gameserver.features.route.authenticationserver.authentication.receiver.GameServerAuthenticationReceiver;
+import pl.bbl.osbir.gameserver.features.route.authenticationserver.information.packets.InformationPackets;
 import pl.bbl.osbir.gameserver.features.route.authenticationserver.information.receiver.InformationReceiver;
 import pl.bbl.osbir.gameserver.server.properties.GameServerProperties;
+import pl.bbl.osbir.gameserver.tools.ServerLogger;
 
 public class AuthenticationServerConnection extends AbstractClient {
     private AuthenticationConnectionWrapper authenticationConnectionWrapper;
@@ -47,7 +49,13 @@ public class AuthenticationServerConnection extends AbstractClient {
     }
 
     public void passGameServerAuthenticationResult(boolean result){
+        if(result)
+            sendGameServerInformation();
         authenticationConnectionWrapper.passGameServerAuthenticationResult(result);
+    }
+
+    private void sendGameServerInformation(){
+        write(InformationPackets.createServerInformationPacket());
     }
 
     public void verifyUser(String userId) {
@@ -56,9 +64,5 @@ public class AuthenticationServerConnection extends AbstractClient {
 
     public void passUserVerificationResult(String userId, boolean result){
         authenticationConnectionWrapper.passUserVerificationResult(userId, result);
-    }
-
-    public void sendGameServerInformation(){
-        informationReceiver.updateServerInformation();
     }
 }

@@ -19,10 +19,14 @@ public class GameServerAuthenticationReceiver extends PacketReceiver {
     public boolean receive(Packet packet) {
         switch (packet.packetPurpose){
             case "AUTHENTICATION_RESULT":
-                getAuthenticationServerConnection().passGameServerAuthenticationResult((boolean)packet.getData("result"));
+                passVerificationResult(packet);
                 return true;
         }
         return false;
+    }
+
+    private void passVerificationResult(Packet packet){
+        getAuthenticationServerConnection().passGameServerAuthenticationResult((boolean)packet.getData("result"));
     }
 
     public void requestAuthentication(String gameServerAuthenticationKey){

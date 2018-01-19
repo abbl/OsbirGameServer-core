@@ -6,6 +6,7 @@ import pl.bbl.network.server.handlers.PacketReceiver;
 import pl.bbl.osbir.gameserver.authconnection.AuthenticationConnectionWrapper;
 import pl.bbl.osbir.gameserver.authconnection.instance.AuthenticationServerConnection;
 import pl.bbl.osbir.gameserver.features.route.authenticationserver.information.packets.InformationPackets;
+import pl.bbl.osbir.gameserver.tools.ServerLogger;
 
 public class InformationReceiver extends PacketReceiver {
     public InformationReceiver(String receiverType, AbstractClient abstractClient) {
@@ -25,10 +26,6 @@ public class InformationReceiver extends PacketReceiver {
 
     public void requestUserVerification(String userId){
         sendPacket(InformationPackets.createUserVerificationPacket(userId));
-    }
-
-    public void updateServerInformation(){
-        sendPacket(InformationPackets.createServerInformationPacket());
     }
 
     private AuthenticationServerConnection getAuthenticationServerConnection(){
