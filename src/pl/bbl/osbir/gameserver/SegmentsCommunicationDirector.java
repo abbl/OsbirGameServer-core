@@ -1,38 +1,19 @@
 package pl.bbl.osbir.gameserver;
 
-import pl.bbl.osbir.gameserver.authconnection.AuthenticationConnectionWrapper;
-import pl.bbl.osbir.gameserver.server.GameServerWrapper;
+import pl.bbl.osbir.gameserver.authentication.connection.AuthenticationConnection;
 
 public class SegmentsCommunicationDirector {
-    private GameServerWrapper gameServerWrapper;
-    private AuthenticationConnectionWrapper authenticationConnectionWrapper;
+    private AuthenticationConnection authenticationConnection;
 
     public SegmentsCommunicationDirector(){
-        this.gameServerWrapper = new GameServerWrapper(this);
-        this.authenticationConnectionWrapper = new AuthenticationConnectionWrapper(this);
+        this.authenticationConnection = new AuthenticationConnection();
     }
 
-    public void connectToAuthenticationServer(){
-        authenticationConnectionWrapper.establishConnection();
-    }
-
-    public void startGameServer(){
-        gameServerWrapper.startGameServer();
-    }
-
-    public void requestUserVerification(String userId){
-        authenticationConnectionWrapper.requestUserVerification(userId);
-    }
-
-    public void passUserVerificationResult(String userId, boolean result){
-        gameServerWrapper.receiveVerificationResult(userId, result);
+    public void establishConnectionToAuthenticationServer(){
+        authenticationConnection.start();
     }
 
     public void requestGameServerAuthentication(){
-        authenticationConnectionWrapper.requestGameServerAuthentication();
-    }
-
-    public void passServerAuthenticationResult(boolean result){
-        gameServerWrapper.authenticateServer(result);
+        authenticationConnection.requestAuthentication();
     }
 }
