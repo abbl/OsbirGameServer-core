@@ -9,4 +9,8 @@ public class InformationExchangerPackets {
                 .addData("host", GameServerProperties.GAMESERVER_HOST)
                 .addData("port", GameServerProperties.GAMESERVER_PORT);
     }
+
+    public static Packet createPlayerVerificationPacket(String userKey, String username){
+        return new Packet("VERIFY_USER").addData("userKey", userKey).addData("username", username);
+    }
 }

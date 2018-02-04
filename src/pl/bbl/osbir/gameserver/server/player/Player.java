@@ -5,6 +5,7 @@ import pl.bbl.network.server.connection.AbstractUser;
 
 public class Player extends AbstractUser {
     private String userIdAcquiredFromAuthServer;
+    private String usernameAcquiredFromAuthServer;
 
     public Player(String id, Channel channel) {
         super(id, channel);
@@ -14,7 +15,15 @@ public class Player extends AbstractUser {
         this.userIdAcquiredFromAuthServer = userIdAcquiredFromAuthServer;
     }
 
-    public boolean isUserIdAcquiredFromAuthServerIsEqual(String otherUserId) {
-        return userIdAcquiredFromAuthServer.equals(otherUserId);
+    public String getUserIdAcquiredFromAuthServer(){
+        return userIdAcquiredFromAuthServer;
+    }
+
+    public String getUsernameAcquiredFromAuthServer() {
+        return usernameAcquiredFromAuthServer;
+    }
+
+    public void setUsernameAcquiredFromAuthServer(String usernameAcquiredFromAuthServer) {
+        this.usernameAcquiredFromAuthServer = usernameAcquiredFromAuthServer;
     }
 }

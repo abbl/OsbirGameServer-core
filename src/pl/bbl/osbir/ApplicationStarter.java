@@ -10,5 +10,6 @@ public class ApplicationStarter {
         SegmentsCommunicationDirector segmentsCommunicationDirector = new SegmentsCommunicationDirector();
         segmentsCommunicationDirector.establishConnectionToAuthenticationServer();
         segmentsCommunicationDirector.requestGameServerAuthentication();
+        segmentsCommunicationDirector.startGameServer();
     }
 }
